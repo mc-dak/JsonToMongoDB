@@ -1,6 +1,8 @@
 package json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.HttpServletBean;
@@ -11,11 +13,14 @@ import java.util.stream.Collectors;
 
 import com.mongodb.*;
 
+@RefreshScope
 @RestController
 @RequestMapping("api/file")
 public class FileRestController {
 
     private static String UPLOAD_DIR = "uploads";
+    @Value("${mongodb.host}")
+    private String host;
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
@@ -58,6 +63,13 @@ public class FileRestController {
             DB db = mongo.getDB("db");
             DBCollection dbCollection = db.getCollection("collection");
             dbCollection.insert(root);
+
+            System.out.println(host);
+
+            DBCursor cur = dbCollection.find();
+            while(cur.hasNext()) {
+                System.out.println(cur.next());
+            }
         }
         catch (IOException e) {e.printStackTrace();}
 
