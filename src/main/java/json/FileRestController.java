@@ -18,7 +18,10 @@ import com.mongodb.*;
 @RequestMapping("api/file")
 public class FileRestController {
 
-    private static String UPLOAD_DIR = "uploads";
+//    private static String UPLOAD_DIR = "uploads";
+
+    @Value("${upload.dir}")
+    private String UPLOAD_DIR;
 
     @Value("${spring.data.mongodb.host}")
     private String host;
@@ -69,22 +72,15 @@ public class FileRestController {
             ObjectMapper objectMapper = new ObjectMapper();
             Root root = objectMapper.readValue(string, Root.class);
 
-//            MongoClient mongo = new MongoClient(host, 27017);
-//            MongoClient mongo = new MongoClient(new ServerAddress("localhost", 27017));
             MongoClient mongo = new MongoClient(new ServerAddress(host, Integer.parseInt(port)));
-//            DB db = mongo.getDB("db");
             DB db = mongo.getDB(dbName);
-//            DBCollection dbCollection = db.getCollection("collection");
             DBCollection dbCollection = db.getCollection(collection);
             dbCollection.insert(root);
 
-            System.out.println(host);
-            System.out.println(port);
-
-            DBCursor cur = dbCollection.find();
-            while(cur.hasNext()) {
-                System.out.println(cur.next());
-            }
+//            DBCursor cur = dbCollection.find();
+//            while(cur.hasNext()) {
+//                System.out.println(cur.next());
+//            }
         }
         catch (IOException e) {e.printStackTrace();}
 
