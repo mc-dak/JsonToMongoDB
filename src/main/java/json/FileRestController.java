@@ -19,7 +19,6 @@ import com.mongodb.*;
 public class FileRestController {
 
 //    private static String UPLOAD_DIR = "uploads";
-
     @Value("${upload.dir}")
     private String UPLOAD_DIR;
 
