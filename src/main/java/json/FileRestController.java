@@ -20,12 +20,17 @@ public class FileRestController {
 
     private static String UPLOAD_DIR = "uploads";
 
-    //    @Value("${spring.data.mongodb.host}")
-    @Value("${mongodb.host}")
+    @Value("${spring.data.mongodb.host}")
     private String host;
 
-    @Value("${mongodb.port}")
+    @Value("${spring.data.mongodb.port}")
     private String port;
+
+    @Value("${spring.data.mongodb.database}")
+    private String dbName;
+
+    @Value("${spring.data.mongodb.collection}")
+    private String collection;
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
@@ -67,11 +72,14 @@ public class FileRestController {
 //            MongoClient mongo = new MongoClient(host, 27017);
 //            MongoClient mongo = new MongoClient(new ServerAddress("localhost", 27017));
             MongoClient mongo = new MongoClient(new ServerAddress(host, Integer.parseInt(port)));
-            DB db = mongo.getDB("db");
-            DBCollection dbCollection = db.getCollection("collection");
+//            DB db = mongo.getDB("db");
+            DB db = mongo.getDB(dbName);
+//            DBCollection dbCollection = db.getCollection("collection");
+            DBCollection dbCollection = db.getCollection(collection);
             dbCollection.insert(root);
 
             System.out.println(host);
+            System.out.println(port);
 
             DBCursor cur = dbCollection.find();
             while(cur.hasNext()) {
