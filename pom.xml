@@ -8,6 +8,15 @@
     <artifactId>JsonToMongoDB</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <!-- new -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-cloud.version>Finchley.SR1</spring-cloud.version>
+        <!-- new -->
+        <java.version>1.8</java.version>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -43,7 +52,6 @@
             <artifactId>jackson-core</artifactId>
             <version>2.9.7</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -69,7 +77,6 @@
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
         </dependency>
-
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
@@ -94,15 +101,6 @@
         </dependencies>
     </dependencyManagement>
     <!-- new -->
-    <properties>
-        <!-- new -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-cloud.version>Finchley.SR1</spring-cloud.version>
-        <!-- new -->
-        <java.version>1.8</java.version>
-    </properties>
-
 
     <build>
         <plugins>
