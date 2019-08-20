@@ -1,4 +1,4 @@
-package json;
+package json.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,54 +12,53 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "added_list_ids",
-        "approvals_added",
+        "approvals",
         "author",
+        "comments",
         "create_date",
         "due_date",
-        "field_updates",
+        "fields",
+        "form_id",
         "id",
+        "last_modified_date",
+        "list_ids",
         "text"
 })
-public class Comment {
+public class Task {
 
-    @JsonProperty("added_list_ids")
-    private List<Integer> addedListIds = null;
-    @JsonProperty("approvals_added")
-    private List<List<ApprovalsAdded>> approvalsAdded = null;
+    @JsonProperty("approvals")
+    private List<List<Approval>> approvals = null;
     @JsonProperty("author")
     private Author author;
+    @JsonProperty("comments")
+    private List<Comment> comments = null;
     @JsonProperty("create_date")
     private String createDate;
     @JsonProperty("due_date")
     private String dueDate;
-    @JsonProperty("field_updates")
-    private List<FieldUpdate> fieldUpdates = null;
+    @JsonProperty("fields")
+    private List<Field> fields = null;
+    @JsonProperty("form_id")
+    private Integer formId;
     @JsonProperty("id")
     private Integer id;
+    @JsonProperty("last_modified_date")
+    private String lastModifiedDate;
+    @JsonProperty("list_ids")
+    private List<Integer> listIds = null;
     @JsonProperty("text")
     private String text;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("added_list_ids")
-    public List<Integer> getAddedListIds() {
-        return addedListIds;
+    @JsonProperty("approvals")
+    public List<List<Approval>> getApprovals() {
+        return approvals;
     }
 
-    @JsonProperty("added_list_ids")
-    public void setAddedListIds(List<Integer> addedListIds) {
-        this.addedListIds = addedListIds;
-    }
-
-    @JsonProperty("approvals_added")
-    public List<List<ApprovalsAdded>> getApprovalsAdded() {
-        return approvalsAdded;
-    }
-
-    @JsonProperty("approvals_added")
-    public void setApprovalsAdded(List<List<ApprovalsAdded>> approvalsAdded) {
-        this.approvalsAdded = approvalsAdded;
+    @JsonProperty("approvals")
+    public void setApprovals(List<List<Approval>> approvals) {
+        this.approvals = approvals;
     }
 
     @JsonProperty("author")
@@ -70,6 +69,16 @@ public class Comment {
     @JsonProperty("author")
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    @JsonProperty("comments")
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    @JsonProperty("comments")
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @JsonProperty("create_date")
@@ -92,14 +101,24 @@ public class Comment {
         this.dueDate = dueDate;
     }
 
-    @JsonProperty("field_updates")
-    public List<FieldUpdate> getFieldUpdates() {
-        return fieldUpdates;
+    @JsonProperty("fields")
+    public List<Field> getFields() {
+        return fields;
     }
 
-    @JsonProperty("field_updates")
-    public void setFieldUpdates(List<FieldUpdate> fieldUpdates) {
-        this.fieldUpdates = fieldUpdates;
+    @JsonProperty("fields")
+    public void setFields(List<Field> fields) {
+        this.fields = fields;
+    }
+
+    @JsonProperty("form_id")
+    public Integer getFormId() {
+        return formId;
+    }
+
+    @JsonProperty("form_id")
+    public void setFormId(Integer formId) {
+        this.formId = formId;
     }
 
     @JsonProperty("id")
@@ -110,6 +129,26 @@ public class Comment {
     @JsonProperty("id")
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @JsonProperty("last_modified_date")
+    public String getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    @JsonProperty("last_modified_date")
+    public void setLastModifiedDate(String lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+    @JsonProperty("list_ids")
+    public List<Integer> getListIds() {
+        return listIds;
+    }
+
+    @JsonProperty("list_ids")
+    public void setListIds(List<Integer> listIds) {
+        this.listIds = listIds;
     }
 
     @JsonProperty("text")
@@ -131,5 +170,4 @@ public class Comment {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
-
 }

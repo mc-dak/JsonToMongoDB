@@ -1,11 +1,10 @@
-package json;
+package json.model;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.*;
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({

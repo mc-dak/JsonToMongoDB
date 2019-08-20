@@ -1,4 +1,4 @@
-package json;
+package json.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,23 +17,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "last_name",
         "type"
 })
-public class Author {
+public class Person {
 
     @JsonProperty("email")
     private String email;
-
     @JsonProperty("first_name")
     private String firstName;
-
     @JsonProperty("id")
     private Integer id;
-
     @JsonProperty("last_name")
     private String lastName;
-
     @JsonProperty("type")
     private String type;
-
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

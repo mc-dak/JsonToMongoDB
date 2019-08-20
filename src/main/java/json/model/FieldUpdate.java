@@ -1,6 +1,5 @@
-package json;
+package json.model;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;

@@ -1,4 +1,5 @@
-package json;
+package json.model;
+
 
 import java.util.HashMap;
 import java.util.Map;
