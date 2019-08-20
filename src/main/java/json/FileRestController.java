@@ -3,9 +3,11 @@ package json;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.HttpServletBean;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -20,7 +22,7 @@ public class FileRestController {
 
 //    private static String UPLOAD_DIR = "uploads";
     @Value("${upload.dir}")
-    private String UPLOAD_DIR;
+    private String upload_dir;
 
     @Value("${spring.data.mongodb.host}")
     private String host;
@@ -34,17 +36,24 @@ public class FileRestController {
     @Value("${spring.data.mongodb.collection}")
     private String collection;
 
-    @RequestMapping(value = "upload", method = RequestMethod.POST)
+//    @RequestMapping(value = "upload", method = RequestMethod.POST)
+    @PostMapping(value = "upload")
     public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         try {
             String fileName = file.getOriginalFilename();
-            String path = request.getServletContext().getRealPath("") + UPLOAD_DIR + File.separator + fileName;
+            System.out.println(fileName);
+            String path = request.getServletContext().getRealPath("") + upload_dir + File.separator + fileName;
+            System.out.println(request.getServletContext().getRealPath(""));
+            System.out.println(path);
             saveFile(file.getInputStream(), path);
             sendToMongo(path);
         } catch (Exception e) {
-            return e.getMessage();
+                return e.getMessage();
+            //            return ResponseEntity.notFound().build();
+//            return new ResponseEntity<String>("error", HttpStatus.NOT_FOUND);
         }
         return "uploaded";
+//        return ResponseEntity.ok("uploaded");
     }
 
     private void saveFile(InputStream inputStream, String path) {
@@ -67,9 +76,9 @@ public class FileRestController {
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-            String string = bufferedReader.lines().collect(Collectors.joining());
+            String fullDoc = bufferedReader.lines().collect(Collectors.joining());
             ObjectMapper objectMapper = new ObjectMapper();
-            Root root = objectMapper.readValue(string, Root.class);
+            Root root = objectMapper.readValue(fullDoc, Root.class);
 
             MongoClient mongo = new MongoClient(new ServerAddress(host, Integer.parseInt(port)));
             DB db = mongo.getDB(dbName);
@@ -81,11 +90,9 @@ public class FileRestController {
 //                System.out.println(cur.next());
 //            }
         }
-        catch (IOException e) {e.printStackTrace();}
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     }
-
-
-
-

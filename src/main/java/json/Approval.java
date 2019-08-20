@@ -10,16 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "approval_choice",
-        "person"
-})
 public class Approval {
 
     @JsonProperty("approval_choice")
     private String approvalChoice;
+
     @JsonProperty("person")
     private Person person;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

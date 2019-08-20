@@ -25,7 +25,7 @@ public class Field {
     @JsonProperty("type")
     private String type;
     @JsonProperty("value")
-//    @JsonIgnore
+
     private Object value;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -61,13 +61,13 @@ public class Field {
     }
 
     @JsonProperty("value")
-//    @JsonIgnore
+
     public Object getValue() {
         return value;
     }
 
     @JsonProperty("value")
-//    @JsonIgnore
+
     public void setValue(Object value) {
         this.value = value;
     }
