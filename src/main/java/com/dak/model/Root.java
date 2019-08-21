@@ -2,18 +2,9 @@ package com.dak.model;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import com.fasterxml.jackson.annotation.*;
 import com.mongodb.BasicDBObject;
 
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonPropertyOrder({
-//        "access_token",
-//        "event",
-//        "task",
-//        "task_id",
-//        "user_id"
-//})
 public class Root extends BasicDBObject {
 
     @JsonProperty("access_token")

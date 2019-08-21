@@ -2,18 +2,11 @@ package com.dak.model;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonPropertyOrder({
-//        "approval_choice",
-//        "person"
-//})
 public class Approval {
 
     @JsonProperty("approval_choice")

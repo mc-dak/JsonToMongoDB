@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,7 +34,7 @@ public class FileService {
             mongoService.sendToMongo(path);
         } catch (Exception e) {
             return e.getMessage();
-            //            return ResponseEntity.notFound().build();
+//            return ResponseEntity.notFound().build();
 //            return new ResponseEntity<String>("error", HttpStatus.NOT_FOUND);
         }
         return "uploaded";
