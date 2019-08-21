@@ -3,6 +3,7 @@ package com.dak.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,26 +13,37 @@ public class Task {
 
     @JsonProperty("approvals")
     private List<List<Approval>> approvals = null;
+
     @JsonProperty("author")
     private Author author;
+
     @JsonProperty("comments")
     private List<Comment> comments = null;
+
     @JsonProperty("create_date")
     private String createDate;
+
     @JsonProperty("due_date")
     private String dueDate;
+
     @JsonProperty("fields")
     private List<Field> fields = null;
+
     @JsonProperty("form_id")
     private Integer formId;
+
     @JsonProperty("id")
     private Integer id;
+
     @JsonProperty("last_modified_date")
     private String lastModifiedDate;
+
     @JsonProperty("list_ids")
     private List<Integer> listIds = null;
+
     @JsonProperty("text")
     private String text;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

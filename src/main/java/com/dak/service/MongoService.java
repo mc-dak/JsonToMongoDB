@@ -1,10 +1,15 @@
 package com.dak.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mongodb.*;
 import com.dak.model.Root;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+import com.mongodb.ServerAddress;
+import com.mongodb.DBCursor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -37,10 +42,10 @@ public class MongoService {
             DBCollection dbCollection = db.getCollection(collection);
             dbCollection.insert(root);
 
-            DBCursor cur = dbCollection.find();
-            while(cur.hasNext()) {
-                System.out.println(cur.next());
-            }
+//            DBCursor cur = dbCollection.find();
+//            while (cur.hasNext()) {
+//                System.out.println(cur.next());
+//            }
         } catch (IOException e) {
             e.printStackTrace();
         }
