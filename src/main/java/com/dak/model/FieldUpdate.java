@@ -9,24 +9,27 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "id",
-        "name",
-        "type",
-        "value"
-})
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonPropertyOrder({
+//        "id",
+//        "name",
+//        "type",
+//        "value"
+//})
 public class FieldUpdate {
 
     @JsonProperty("id")
     private Integer id;
+
     @JsonProperty("name")
     private String name;
+
     @JsonProperty("type")
     private String type;
+
     @JsonProperty("value")
-//    @JsonIgnore
     private Object value;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -61,13 +64,11 @@ public class FieldUpdate {
     }
 
     @JsonProperty("value")
-//    @JsonIgnore
     public Object getValue() {
         return value;
     }
 
     @JsonProperty("value")
-//    @JsonIgnore
     public void setValue(Object value) {
         this.value = value;
     }

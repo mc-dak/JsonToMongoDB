@@ -9,26 +9,31 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "email",
-        "first_name",
-        "id",
-        "last_name",
-        "type"
-})
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonPropertyOrder({
+//        "email",
+//        "first_name",
+//        "id",
+//        "last_name",
+//        "type"
+//})
 public class Person {
 
     @JsonProperty("email")
     private String email;
+
     @JsonProperty("first_name")
     private String firstName;
+
     @JsonProperty("id")
     private Integer id;
+
     @JsonProperty("last_name")
     private String lastName;
+
     @JsonProperty("type")
     private String type;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

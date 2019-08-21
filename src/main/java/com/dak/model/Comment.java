@@ -3,6 +3,7 @@ package com.dak.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,35 +11,43 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "added_list_ids",
-        "approvals_added",
-        "author",
-        "create_date",
-        "due_date",
-        "field_updates",
-        "id",
-        "text"
-})
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonPropertyOrder({
+//        "added_list_ids",
+//        "approvals_added",
+//        "author",
+//        "create_date",
+//        "due_date",
+//        "field_updates",
+//        "id",
+//        "text"
+//})
 public class Comment {
 
     @JsonProperty("added_list_ids")
     private List<Integer> addedListIds = null;
+
     @JsonProperty("approvals_added")
     private List<List<ApprovalsAdded>> approvalsAdded = null;
+
     @JsonProperty("author")
     private Author author;
+
     @JsonProperty("create_date")
     private String createDate;
+
     @JsonProperty("due_date")
     private String dueDate;
+
     @JsonProperty("field_updates")
     private List<FieldUpdate> fieldUpdates = null;
+
     @JsonProperty("id")
     private Integer id;
+
     @JsonProperty("text")
     private String text;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

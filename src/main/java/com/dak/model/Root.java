@@ -6,26 +6,31 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.*;
 import com.mongodb.BasicDBObject;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "access_token",
-        "event",
-        "task",
-        "task_id",
-        "user_id"
-})
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonPropertyOrder({
+//        "access_token",
+//        "event",
+//        "task",
+//        "task_id",
+//        "user_id"
+//})
 public class Root extends BasicDBObject {
 
     @JsonProperty("access_token")
     private String accessToken;
+
     @JsonProperty("event")
     private String event;
+
     @JsonProperty("task")
     private Task task;
+
     @JsonProperty("task_id")
     private Integer taskId;
+
     @JsonProperty("user_id")
     private Integer userId;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

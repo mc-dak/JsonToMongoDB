@@ -33,18 +33,16 @@ public class MongoService {
             String fullDoc = bufferedReader.lines().collect(Collectors.joining());
             ObjectMapper objectMapper = new ObjectMapper();
             Root root = objectMapper.readValue(fullDoc, Root.class);
-
             MongoClient mongo = new MongoClient(new ServerAddress(host, Integer.parseInt(port)));
             DB db = mongo.getDB(dbName);
             DBCollection dbCollection = db.getCollection(collection);
             dbCollection.insert(root);
 
-//            DBCursor cur = dbCollection.find();
-//            while(cur.hasNext()) {
-//                System.out.println(cur.next());
-//            }
-        }
-        catch (IOException e) {
+            DBCursor cur = dbCollection.find();
+            while(cur.hasNext()) {
+                System.out.println(cur.next());
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

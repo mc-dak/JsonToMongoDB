@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * to check POST feature i made addjson.html in
-* /src/main/webapp/ to upload json files
+* /src/main/resources/templates to upload json files
 */
 
 @SpringBootApplication

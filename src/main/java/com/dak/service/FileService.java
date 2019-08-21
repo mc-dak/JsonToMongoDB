@@ -43,12 +43,12 @@ public class FileService {
     }
 
     private void saveFile(InputStream inputStream, String path) {
-        try{
+        try {
             OutputStream outputStream = new FileOutputStream(new File(path));
             int read = 0;
-            byte[]bytes = new byte[1024];
+            byte[] bytes = new byte[1024];
             while ((read = inputStream.read(bytes)) != -1) {
-                outputStream.write(bytes,0,read);
+                outputStream.write(bytes, 0, read);
             }
             outputStream.flush();
             outputStream.close();
