@@ -1,4 +1,4 @@
-package json.model;
+package com.dak.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,46 +11,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "email",
-        "first_name",
         "id",
-        "last_name",
-        "type"
+        "name",
+        "type",
+        "value"
 })
-public class Person {
+public class Field {
 
-    @JsonProperty("email")
-    private String email;
-    @JsonProperty("first_name")
-    private String firstName;
     @JsonProperty("id")
     private Integer id;
-    @JsonProperty("last_name")
-    private String lastName;
+    @JsonProperty("name")
+    private String name;
     @JsonProperty("type")
     private String type;
+    @JsonProperty("value")
+
+    private Object value;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("email")
-    public String getEmail() {
-        return email;
-    }
-
-    @JsonProperty("email")
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @JsonProperty("first_name")
-    public String getFirstName() {
-        return firstName;
-    }
-
-    @JsonProperty("first_name")
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
     @JsonProperty("id")
     public Integer getId() {
@@ -62,14 +40,14 @@ public class Person {
         this.id = id;
     }
 
-    @JsonProperty("last_name")
-    public String getLastName() {
-        return lastName;
+    @JsonProperty("name")
+    public String getName() {
+        return name;
     }
 
-    @JsonProperty("last_name")
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
     }
 
     @JsonProperty("type")
@@ -80,6 +58,18 @@ public class Person {
     @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
+    }
+
+    @JsonProperty("value")
+
+    public Object getValue() {
+        return value;
+    }
+
+    @JsonProperty("value")
+
+    public void setValue(Object value) {
+        this.value = value;
     }
 
     @JsonAnyGetter

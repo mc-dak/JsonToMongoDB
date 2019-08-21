@@ -1,4 +1,4 @@
-package json.model;
+package com.dak.model;
 
 import java.util.HashMap;
 import java.util.List;

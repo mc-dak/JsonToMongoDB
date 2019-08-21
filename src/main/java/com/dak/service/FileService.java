@@ -1,4 +1,4 @@
-package json.service;
+package com.dak.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +20,7 @@ import java.io.OutputStream;
 @RequestMapping("api/file")
 public class FileService {
 
-    @Value("${upload.dir}")
+    @Value("${path.to.dir.uploads}")
     private String upload_dir;
 
     @Autowired
@@ -30,11 +30,7 @@ public class FileService {
     public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         try {
             String fileName = file.getOriginalFilename();
-            String path = System.getProperty("user.dir")+"/src/main/resources/"+upload_dir + File.separator + fileName;
-//            System.out.println(path2);
-//            String path = request.getServletContext().getRealPath("") + upload_dir + File.separator + fileName;
-//            System.out.println(request.getServletContext().getRealPath(""));
-//            System.out.println(path);
+            String path = System.getProperty("user.dir") + upload_dir + File.separator + fileName;
             saveFile(file.getInputStream(), path);
             mongoService.sendToMongo(path);
         } catch (Exception e) {
