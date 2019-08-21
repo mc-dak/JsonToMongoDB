@@ -3,8 +3,6 @@ package json.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,33 +15,27 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-
-//@Component
-@ComponentScan
 @RefreshScope
 @RestController
 @RequestMapping("api/file")
 public class FileService {
-    //    private static String UPLOAD_DIR = "uploads";
+
     @Value("${upload.dir}")
     private String upload_dir;
 
     @Autowired
     MongoService mongoService;
 
-    //    @RequestMapping(value = "upload", method = RequestMethod.POST)
     @PostMapping(value = "upload")
     public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         try {
             String fileName = file.getOriginalFilename();
-            System.out.println(fileName);
-            String path = request.getServletContext().getRealPath("") + upload_dir + File.separator + fileName;
-            System.out.println(request.getServletContext().getRealPath(""));
-            System.out.println(path);
+            String path = System.getProperty("user.dir")+"/src/main/resources/"+upload_dir + File.separator + fileName;
+//            System.out.println(path2);
+//            String path = request.getServletContext().getRealPath("") + upload_dir + File.separator + fileName;
+//            System.out.println(request.getServletContext().getRealPath(""));
+//            System.out.println(path);
             saveFile(file.getInputStream(), path);
-
-            //            sendToMongo(path);
-
             mongoService.sendToMongo(path);
         } catch (Exception e) {
             return e.getMessage();

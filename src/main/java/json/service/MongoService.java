@@ -40,10 +40,10 @@ public class MongoService {
             DBCollection dbCollection = db.getCollection(collection);
             dbCollection.insert(root);
 
-            DBCursor cur = dbCollection.find();
-            while(cur.hasNext()) {
-                System.out.println(cur.next());
-            }
+//            DBCursor cur = dbCollection.find();
+//            while(cur.hasNext()) {
+//                System.out.println(cur.next());
+//            }
         }
         catch (IOException e) {
             e.printStackTrace();
