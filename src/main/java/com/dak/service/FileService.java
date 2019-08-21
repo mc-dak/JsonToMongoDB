@@ -42,9 +42,9 @@ public class FileService {
 //        return ResponseEntity.ok("uploaded");
     }
 
-    private void saveFile(InputStream inputStream, String path) {
+    private void saveFile(InputStream inputStream, String filePath) {
         try {
-            OutputStream outputStream = new FileOutputStream(new File(path));
+            OutputStream outputStream = new FileOutputStream(new File(filePath));
             int read = 0;
             byte[] bytes = new byte[1024];
             while ((read = inputStream.read(bytes)) != -1) {

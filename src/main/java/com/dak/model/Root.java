@@ -3,7 +3,10 @@ package com.dak.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mongodb.BasicDBObject;
 
 public class Root extends BasicDBObject {
