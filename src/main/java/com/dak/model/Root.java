@@ -1,32 +1,31 @@
-package json;
+package com.dak.model;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "access_token",
-        "event",
-        "task",
-        "task_id",
-        "user_id"
-})
 public class Root extends BasicDBObject {
 
     @JsonProperty("access_token")
     private String accessToken;
+
     @JsonProperty("event")
     private String event;
+
     @JsonProperty("task")
     private Task task;
+
     @JsonProperty("task_id")
     private Integer taskId;
+
     @JsonProperty("user_id")
     private Integer userId;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

@@ -1,10 +1,11 @@
-package json;
+package com.dak;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/* to check POST feature i made addjson.html in
-* /src/main/webapp/ to upload json files
+/**
+ * to check POST feature i made addjson.html in
+* /src/main/resources/templates to upload json files
 */
 
 @SpringBootApplication

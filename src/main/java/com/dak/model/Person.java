@@ -1,34 +1,52 @@
-package json;
+package com.dak.model;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "id",
-        "name",
-        "type",
-        "value"
-})
-public class Field {
+public class Person {
+
+    @JsonProperty("email")
+    private String email;
+
+    @JsonProperty("first_name")
+    private String firstName;
 
     @JsonProperty("id")
     private Integer id;
-    @JsonProperty("name")
-    private String name;
+
+    @JsonProperty("last_name")
+    private String lastName;
+
     @JsonProperty("type")
     private String type;
-    @JsonProperty("value")
-//    @JsonIgnore
-    private Object value;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("email")
+    public String getEmail() {
+        return email;
+    }
+
+    @JsonProperty("email")
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @JsonProperty("first_name")
+    public String getFirstName() {
+        return firstName;
+    }
+
+    @JsonProperty("first_name")
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     @JsonProperty("id")
     public Integer getId() {
@@ -40,14 +58,14 @@ public class Field {
         this.id = id;
     }
 
-    @JsonProperty("name")
-    public String getName() {
-        return name;
+    @JsonProperty("last_name")
+    public String getLastName() {
+        return lastName;
     }
 
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
+    @JsonProperty("last_name")
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @JsonProperty("type")
@@ -58,18 +76,6 @@ public class Field {
     @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
-    }
-
-    @JsonProperty("value")
-//    @JsonIgnore
-    public Object getValue() {
-        return value;
-    }
-
-    @JsonProperty("value")
-//    @JsonIgnore
-    public void setValue(Object value) {
-        this.value = value;
     }
 
     @JsonAnyGetter
